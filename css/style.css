@@ -109,3 +109,5 @@ section[id]{scroll-margin-top:84px}
 .faqp{display:grid;transition:grid-template-rows .38s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
 .faqp>div{overflow:hidden;min-height:0}
 @media (prefers-reduced-motion: reduce){.faqp{transition:none}}
+
+@media (max-width:640px){.ltabs{flex-direction:column !important;flex-wrap:nowrap !important}.ltabs>button{flex:none !important;width:100%;box-sizing:border-box}}
