@@ -5,8 +5,8 @@
   'use strict';
 
   /* ---------- Beállítások ---------- */
-  var COLLECTION_DATE = new Date('2026-12-06T10:00:00').getTime();
-  var DATE_LABEL = '2026. december 6., vasárnap';
+  var COLLECTION_DATE = new Date('2026-12-07T10:00:00').getTime();
+  var DATE_LABEL = '2026. december 7.';
   var BASE_PROGRESS = 62; // % – élesben a valós teljesítettségből számolandó
   var PAGE_SIZE = 12;
 
@@ -227,7 +227,7 @@
     $('cta-pack').textContent = 'Összes ajándékcsomag (' + countOf('pack') + ')';
     $('cta-home').textContent = 'Összes otthoni csomag (' + countOf('home') + ')';
     $('steps').innerHTML = steps.map(function (s) {
-      return '<div class="step reveal" style="position:relative;flex:none;box-sizing:border-box;width:250px;height:240px;background:#FFFFFF;border-radius:24px;padding:40px 20px;box-shadow:0 6px 9px rgba(30,42,60,0.05);display:flex;flex-direction:column;gap:8px">' +
+      return '<div class="step reveal" style="position:relative;box-sizing:border-box;min-height:240px;background:#FFFFFF;border-radius:24px;padding:40px 20px;box-shadow:0 6px 9px rgba(30,42,60,0.05);display:flex;flex-direction:column;gap:8px">' +
         '<div style="position:relative;display:flex;align-items:center;justify-content:space-between">' +
         '<div style="width:48px;height:48px;border-radius:50%;background:' + s.tint + ';display:flex;align-items:center;justify-content:center">' + icon(s.icon, '#1E2A3C', 26, 2) + '</div>' +
         '<div aria-hidden="true" style="position:absolute;right:0;top:-72px;font-family:\'Fredoka\',sans-serif;font-weight:400;font-size:120px;line-height:1;opacity:0.5;color:#C6D3E6;pointer-events:none">' + s.n + '</div></div>' +
@@ -259,36 +259,30 @@
     }).join('');
   }
 
-  function renderHow() {
-    $('how-btn').setAttribute('aria-expanded', String(state.howOpen));
-    $('how-chevron').style.transform = state.howOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-    if (!state.howOpen) { $('how-extra').innerHTML = ''; return; }
-    var num = function (n) {
-      return '<span style="flex:none;width:24px;height:24px;border-radius:50%;background:#D9E4F3;color:#2B4466;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center">' + n + '</span>';
-    };
-    $('how-extra').innerHTML = '<div class="pop" style="margin:24px auto 0;max-width:760px;background:#fff;border-radius:24px;padding:28px 32px;box-shadow:0 10px 30px rgba(30,42,60,0.08)">' +
-      '<h3 style="margin:0 0 12px;font-family:\'Fredoka\',sans-serif;font-weight:600;font-size:24px">Amit érdemes tudni az ajándékozás előtt</h3>' +
-      '<div style="display:flex;flex-direction:column;gap:12px;font-size:16px">' +
-      '<div style="display:flex;gap:12px">' + num(1) + '<span>Csak <strong>új, még becsomagolatlan</strong> ajándékot adj le. A csomagolást a szervezők végzik.</span></div>' +
-      '<div style="display:flex;gap:12px">' + num(2) + '<span>Az ajándékot a gyűjtési napon, személyesen add le: <strong>[leadási hely és időpont]</strong>.</span></div>' +
-      '<div style="display:flex;gap:12px">' + num(3) + '<span>Belépni csak a vállaláskor kell: így küldünk emlékeztetőt, és te is követheted az ajándékod útját.</span></div>' +
-      '<div style="display:flex;gap:12px">' + num(4) + '<span>Ha mégsem tudod teljesíteni, a Vállalásaim panelben lemondhatod, és a kívánság visszakerül a listára.</span></div>' +
-      '</div></div>';
-  }
-
   function renderHomeCards() {
     $('home-child').innerHTML = byIds(homeChild).map(cardHTML).join('');
     $('home-pack').innerHTML = byIds(homePack).map(cardHTML).join('');
   }
 
   function renderFaq() {
-    $('faqs').innerHTML = faqDefs.map(function (d, i) {
+    var box = $('faqs');
+    if (!box.children.length) {
+      box.innerHTML = faqDefs.map(function (d, i) {
+        return '<div style="border-top:1px solid #E1E8F1">' +
+          '<button class="faq" type="button" data-act="faq" data-i="' + i + '" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 8px;font-size:17px;font-weight:800;text-align:left;color:#1E2A3C;background:#fff;border:none;border-radius:12px">' +
+          esc(d.q) + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D688E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;transition:transform .25s ease;transform:rotate(0deg)"><path d="M6 9l6 6 6-6"></path></svg></button>' +
+          '<div class="faqp" aria-hidden="true" style="grid-template-rows:0fr;opacity:0"><div><div style="padding:0 8px 18px;color:#4D688E;font-size:16px">' + esc(d.a) + '</div></div></div></div>';
+      }).join('');
+    }
+    Array.prototype.forEach.call(box.children, function (row, i) {
       var open = state.faq === i;
-      return '<div style="border-top:1px solid #E1E8F1">' +
-        '<button class="faq" type="button" data-act="faq" data-i="' + i + '" aria-expanded="' + open + '" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 8px;font-size:17px;font-weight:800;text-align:left;color:#1E2A3C;background:#fff;border:none;border-radius:12px">' +
-        esc(d.q) + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4D688E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;transition:transform .25s ease;transform:' + (open ? 'rotate(180deg)' : 'rotate(0deg)') + '"><path d="M6 9l6 6 6-6"></path></svg></button>' +
-        (open ? '<div class="pop" style="padding:0 8px 18px;color:#4D688E;font-size:16px">' + esc(d.a) + '</div>' : '') + '</div>';
-    }).join('');
+      row.querySelector('.faq').setAttribute('aria-expanded', String(open));
+      row.querySelector('svg').style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+      var p = row.querySelector('.faqp');
+      p.style.gridTemplateRows = open ? '1fr' : '0fr';
+      p.style.opacity = open ? '1' : '0';
+      p.setAttribute('aria-hidden', String(!open));
+    });
   }
 
   function renderSub() {
@@ -517,7 +511,18 @@
   }
 
   /* ---------- Események ---------- */
+  function setMenu(open) {
+    var m = $('mobmenu'); if (!m) return;
+    m.hidden = !open;
+    $('burger').setAttribute('aria-expanded', String(open));
+    $('burger-open').hidden = open;
+    $('burger-close').hidden = !open;
+  }
   document.addEventListener('click', function (e) {
+    var mm = $('mobmenu');
+    if (mm && !mm.hidden && e.target.closest('#mobmenu a, [data-act="drawer-open"]')) setMenu(false);
+    var lst = e.target.closest('a[data-act^="list-"]');
+    if (lst) e.preventDefault();
     var nav = e.target.closest('[data-nav]');
     if (nav) { e.preventDefault(); state.drawer = false; renderDrawer(); goSection(nav.getAttribute('data-nav')); return; }
 
@@ -531,11 +536,11 @@
 
     switch (act) {
       case 'home': state.drawer = false; renderDrawer(); goHome(); break;
+      case 'menu': setMenu($('mobmenu').hidden); break;
       case 'list': case 'list-child': goList('child'); break;
       case 'list-pack': goList('pack'); break;
       case 'list-home': goList('home'); break;
       case 'tab': state.listType = el.getAttribute('data-key'); state.listFilter = 'all'; state.listLimit = PAGE_SIZE; renderList(); break;
-      case 'how': state.howOpen = !state.howOpen; renderHow(); break;
       case 'ceg': goSection('cegeknek'); break;
       case 'contact': scrollToId('kapcsolat'); break;
       case 'pledge':
@@ -629,7 +634,6 @@
   /* ---------- Indítás ---------- */
   renderStatic();
   renderCards();
-  renderHow();
   renderFaq();
   renderSub();
   renderCeg();

@@ -12,24 +12,38 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header style="position: sticky; top: 0; z-index: 60; padding: 14px 48px; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid #E1E8F1">
-    <div style="max-width: 1344px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px">
+<header class="hdr" style="position: sticky; top: 0; z-index: 60; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); border-bottom: 1px solid #E1E8F1">
+    <div class="hdrin" style="max-width: 1344px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px 20px">
       <a href="#top" data-act="home" style="display: flex; align-items: center; text-decoration: none; flex: none">
-        <img src="assets/logo.png" alt="Add Tovább" width="81" height="52" style="display: block; height: 52px; width: auto">
+        <img class="logo" src="assets/logo.png" alt="Add Tovább" width="81" height="52" style="display: block; height: 52px; width: auto">
       </a>
-      <nav aria-label="Főmenü" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 26px">
+      <div style="display: flex; align-items: center; gap: 12px 26px; min-width: 0">
+        <nav class="deskmenu" aria-label="Főmenü" style="display: flex; align-items: center; gap: 8px 26px">
         <a class="navlink" href="#hogyan" data-nav="hogyan" style="text-decoration: none; color: #5D3027; font-weight: 700">Hogyan működik</a>
-        <a class="navlink" href="#kivansagok" data-nav="kivansagok" style="text-decoration: none; color: #5D3027; font-weight: 700">Gyerekek</a>
-        <a class="navlink" href="#ajandekcsomag" data-nav="ajandekcsomag" style="text-decoration: none; color: #5D3027; font-weight: 700">Ajándékcsomag</a>
-        <a class="navlink" href="#szuksegletek" data-nav="szuksegletek" style="text-decoration: none; color: #5D3027; font-weight: 700">Otthonoknak</a>
+        <a class="navlink" href="#" data-act="list-child" style="text-decoration: none; color: #5D3027; font-weight: 700">Gyerekek</a>
+        <a class="navlink" href="#" data-act="list-pack" style="text-decoration: none; color: #5D3027; font-weight: 700">Ajándékcsomag</a>
+        <a class="navlink" href="#" data-act="list-home" style="text-decoration: none; color: #5D3027; font-weight: 700">Otthonoknak</a>
         <a class="navlink" href="#cegeknek" data-nav="cegeknek" style="text-decoration: none; color: #5D3027; font-weight: 700">Cégeknek</a>
         <a class="navlink" href="#szervezok" data-nav="szervezok" style="text-decoration: none; color: #5D3027; font-weight: 700">Szervezők</a>
-        <button class="ghost" type="button" data-act="drawer-open" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; color: #CA4952; background: #FFFFFF; border: 2px solid #FF6D78; border-radius: 999px">
+        </nav>
+        <button class="ghost pledgebtn" type="button" data-act="drawer-open" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px; font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800; color: #CA4952; background: #FFFFFF; border: 2px solid #FF6D78; border-radius: 999px">
           Vállalásaim
           <span id="pledge-badge" hidden style="min-width: 24px; height: 24px; box-sizing: border-box; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #FFFFFF; background: #FF6D78; border-radius: 999px">0</span>
         </button>
-      </nav>
+        <button class="ghost burger" id="burger" type="button" data-act="menu" aria-label="Menü" aria-expanded="false" aria-controls="mobmenu" style="width: 44px; height: 44px; padding: 0; align-items: center; justify-content: center; background: #FFFFFF; border: 2px solid #D9E4F3; border-radius: 14px; flex: none">
+          <svg id="burger-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E2A3C" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+          <svg id="burger-close" hidden width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E2A3C" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
     </div>
+    <nav id="mobmenu" class="mobmenu pop" hidden aria-label="Mobil menü" style="flex-direction: column; padding: 8px 16px 18px; border-top: 1px solid #E1E8F1; background: #FFFFFF">
+        <a class="mobitem" href="#hogyan" data-nav="hogyan" style="text-decoration: none; color: #5D3027; font-weight: 700">Hogyan működik</a>
+        <a class="mobitem" href="#" data-act="list-child" style="text-decoration: none; color: #5D3027; font-weight: 700">Gyerekek</a>
+        <a class="mobitem" href="#" data-act="list-pack" style="text-decoration: none; color: #5D3027; font-weight: 700">Ajándékcsomag</a>
+        <a class="mobitem" href="#" data-act="list-home" style="text-decoration: none; color: #5D3027; font-weight: 700">Otthonoknak</a>
+        <a class="mobitem" href="#cegeknek" data-nav="cegeknek" style="text-decoration: none; color: #5D3027; font-weight: 700">Cégeknek</a>
+        <a class="mobitem" href="#szervezok" data-nav="szervezok" style="text-decoration: none; color: #5D3027; font-weight: 700">Szervezők</a>
+    </nav>
   </header>
 
 <main id="view-home">
@@ -198,8 +212,26 @@
         <h2 class="reveal" style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 40px; line-height: 46px">Öt lépés az ajándékig</h2>
         <p class="reveal" style="margin: 0; font-size: 18px; line-height: 27px; color: #4D688E">Te nem találkozol személyesen a gyerekkel, de az ajándékod pontosan hozzá jut el.</p>
       </div>
-      <div id="steps" style="width: 100%; padding-top: 60px; display: flex; flex-wrap: wrap; justify-content: center; gap: 60px 20px">
-        
+      <div class="bento"><div id="steps"></div>
+        <div class="b-info reveal" style="position: relative; overflow: hidden; box-sizing: border-box; min-height: 240px; background: #FFCBC1; color: #5D3027; border-radius: 24px; padding: 32px; box-shadow: 0 6px 9px rgba(30, 42, 60, 0.05); display: flex; flex-direction: column; justify-content: space-between; gap: 22px">
+          <div aria-hidden="true" style="position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,.35)"></div>
+          <div style="position: relative; display: flex; align-items: center; gap: 14px">
+            <span style="flex: none; width: 48px; height: 48px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7F2930" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M12 11v6"></path><circle cx="12" cy="7.5" r=".6" fill="#7F2930"></circle></svg></span>
+            <h3 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; color: #7F2930">Amit érdemes tudni az ajándékozás előtt</h3>
+          </div>
+          <div class="b-list" style="position: relative">
+            <div style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; color: #7F2930; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center">1</span><span style="font-size: 16px; line-height: 24px; color: #5D3027">Csak új, még becsomagolatlan ajándékot adj le. A csomagolást a szervezők végzik.</span></div>
+            <div style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; color: #7F2930; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center">2</span><span style="font-size: 16px; line-height: 24px; color: #5D3027">Az ajándékot a gyűjtési napon (december 7., 10:00–17:00) személyesen add le a Határőr út 36. alatt.</span></div>
+            <div style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; color: #7F2930; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center">3</span><span style="font-size: 16px; line-height: 24px; color: #5D3027">Belépni csak a vállaláskor kell: így küldünk emlékeztetőt, és te is követheted az ajándékod útját.</span></div>
+            <div style="display: flex; gap: 12px; align-items: flex-start"><span style="flex: none; width: 26px; height: 26px; border-radius: 50%; background: #FFFFFF; color: #7F2930; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center">4</span><span style="font-size: 16px; line-height: 24px; color: #5D3027">Ha mégsem tudod teljesíteni, a Vállalásaim panelben lemondhatod, és a kívánság visszakerül a listára.</span></div>
+          </div>
+          <div style="position: relative">
+            <a class="ghost" href="#gyujtopont" style="display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; box-sizing: border-box; background: transparent; color: #7F2930; font-weight: 800; font-size: 17px; text-decoration: none; border: 2px solid #7F2930; border-radius: 16px">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7F2930" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
+              Hol tudod átadni?
+            </a>
+          </div>
+        </div>
       </div>
 
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px">
@@ -207,13 +239,8 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="2"></rect><path d="M12 9v11M3 9h18M12 9c-2-4-6-4-5-1.5M12 9c2-4 6-4 5-1.5"></path></svg>
           Én is ajándékozom
         </a>
-        <button class="ghost" type="button" data-act="how" id="how-btn" aria-expanded="false" style="display: inline-flex; align-items: center; gap: 10px; height: 58px; padding: 0 30px; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 19px; color: #1E2A3C; background: #FFFFFF; border: 1px solid #8196B6; border-radius: 18px">
-          Hogyan működik?
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1E2A3C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="how-chevron" style="transition: transform 0.25s ease; transform: rotate(0deg)"><path d="M6 9l6 6 6-6"></path></svg>
-        </button>
       </div>
 
-      <div id="how-extra" style="width: 100%; display: flex; justify-content: center"></div>
     </div>
   </section>
 
@@ -423,12 +450,33 @@
 
 <footer style="padding: 40px 48px; background: #F4F9FF; color: #5D3027">
     <div style="max-width: 1344px; margin: 0 auto; display: flex; flex-direction: column; gap: 42px">
+      <div id="gyujtopont" style="display: flex; flex-wrap: wrap; gap: 28px 40px; align-items: stretch">
+        <div style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 14px; justify-content: center">
+          <span style="align-self: flex-start; background: #FFE8E1; color: #CA4952; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px">Gyűjtés és csomagolás</span>
+          <h2 style="margin: 0; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 34px; line-height: 1.15; color: #1E2A3C">Hová vidd az ajándékot?</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #4D688E">Idén a Design Terminal irodában gyűjtjük és csomagoljuk az ajándékokat.</p>
+          <div style="display: flex; flex-direction: column; gap: 4px; font-size: 17px; font-weight: 800; color: #1E2A3C"><span>December 7., 10:00–17:00</span><span style="font-weight: 600; color: #4D688E">1122 Budapest, Határőr út 36. (Design Terminal iroda)</span></div>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Budapest%2C%20Hat%C3%A1r%C5%91r%20%C3%BAt%2036" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 22px; border-radius: 14px; background: #FF6D78; color: #fff; font-weight: 800; font-size: 16px; text-decoration: none">Útvonaltervezés</a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Budapest%2C%20Hat%C3%A1r%C5%91r%20%C3%BAt%2036" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; height: 50px; padding: 0 22px; border-radius: 14px; background: #fff; border: 2px solid #FF6D78; box-sizing: border-box; color: #CA4952; font-weight: 800; font-size: 16px; text-decoration: none">Megnyitás térképen</a>
+          </div>
+        </div>
+        <div style="flex: 1.4 1 340px; min-width: 0; position: relative; height: 280px; border-radius: 24px; overflow: hidden; background: #EDF3FB; box-shadow: 0 18px 40px rgba(30,42,60,.10)">
+          <iframe title="Google térkép: Budapest, Határőr út 36." src="https://maps.google.com/maps?q=Budapest%2C%20Hat%C3%A1r%C5%91r%20%C3%BAt%2036&amp;hl=hu&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.75) hue-rotate(-6deg) contrast(.96) brightness(1.02)"></iframe>
+          <div style="position: absolute; inset: 0; pointer-events: none; border-radius: 24px; box-shadow: inset 0 0 0 1px rgba(30,42,60,.08), inset 0 -60px 50px -40px rgba(255,109,120,.16)"></div>
+          <div style="position: absolute; left: 12px; top: 12px; display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 16px; padding: 8px 14px 8px 8px; box-shadow: 0 10px 24px rgba(30,42,60,.18); pointer-events: none; max-width: calc(100% - 24px)">
+            <span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #FF6D78; display: flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"></rect><path d="M12 8v13M3 13h18M12 8c-2-5-6-4-5-1.5M12 8c2-5 6-4 5-1.5"></path></svg></span>
+            <span><b style="display: block; font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 16px; line-height: 1.15; color: #1E2A3C">Itt gyűjtünk!</b><span style="display: block; font-weight: 700; font-size: 12px; color: #4D688E">Határőr út 36.</span></span>
+          </div>
+        </div>
+      </div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 40px">
         <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 42px">
           <img src="assets/logo.png" alt="Add Tovább" width="87" height="56" style="display: block; height: 56px; width: auto">
           <span style="font-size: 15px; font-weight: 700; color: #5D3027">© 2026 Add Tovább.</span>
         </div>
         <nav aria-label="Lábléc" style="display: flex; flex-wrap: wrap; gap: 10px 28px">
+          <a href="#gyujtopont" style="color: #5D3027; text-decoration: none; font-size: 15px; font-weight: 700">Gyűjtőpont</a>
           <a href="#szervezok" data-nav="szervezok" style="color: #5D3027; text-decoration: none; font-size: 15px; font-weight: 700">Szervezők</a>
           <a href="#gyik" data-nav="kezdd" style="color: #5D3027; text-decoration: none; font-size: 15px; font-weight: 700">Gyakori kérdések</a>
           <a href="#adatkezeles" style="color: #5D3027; text-decoration: none; font-size: 15px; font-weight: 700">Adatkezelés</a>

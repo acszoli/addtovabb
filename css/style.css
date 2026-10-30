@@ -63,6 +63,12 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #E07D
 }
 section[id]{scroll-margin-top:84px}
 @media (max-width:820px){.giftpile{display:none}}
+.bento{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:64px 20px;padding-top:60px;box-sizing:border-box}
+.bento #steps{display:contents}
+.bento .b-info{grid-column:span 3}
+.bento .b-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px}
+@media (max-width:1100px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .b-info{grid-column:span 2}}
+@media (max-width:640px){.bento{grid-template-columns:minmax(0,1fr)}.bento .b-info{grid-column:auto}.bento .b-list{grid-template-columns:minmax(0,1fr)}}
 
 /* Mobil */
 @media (max-width:640px){
@@ -88,3 +94,18 @@ section[id]{scroll-margin-top:84px}
   .gift{display:none !important}
   #szuksegletek .btn{height:auto !important;min-height:58px;padding:12px 22px !important;justify-content:center;text-align:center;width:100%}
 }
+
+/* navigáció */
+.deskmenu a{white-space:nowrap}
+.burger{display:none}
+.hdr{padding:14px 48px}
+.mobmenu{display:none}
+.mobmenu[hidden]{display:none !important}
+.mobitem{display:block;padding:14px 8px;font-size:18px;text-decoration:none;color:#5D3027;font-weight:700;border-bottom:1px solid #EEF2F8}
+.mobitem:last-child{border-bottom:none}
+#burger-open[hidden],#burger-close[hidden]{display:none}
+@media (max-width:1060px){.deskmenu{display:none !important}.burger{display:inline-flex}.mobmenu{display:flex}.hdr{padding:10px 16px}.hdr .logo{height:44px !important;width:auto}.pledgebtn{height:40px !important;padding:0 14px !important;font-size:15px !important}}
+
+.faqp{display:grid;transition:grid-template-rows .38s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+.faqp>div{overflow:hidden;min-height:0}
+@media (prefers-reduced-motion: reduce){.faqp{transition:none}}
